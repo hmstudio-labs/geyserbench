@@ -1,0 +1,16 @@
+[config]
+transactions = 100
+account = "pubkey"
+commitment = "processed"
+
+[[endpoint]]
+name = "grpc"
+url = "http://0.0.0.0:10101"
+x_token = ""
+kind = "yellowstone"
+
+[[endpoint]]
+name = "arpc"
+url = "http://0.0.0.0:20202"
+x_token = ""
+kind = "arpc"

@@ -11,6 +11,7 @@ pub mod yellowstone;
 pub mod thor;
 pub mod shreder;
 pub mod jetstream;
+pub mod jitoshreder;
 
 pub trait GeyserProvider: Send + Sync {
     fn process(
@@ -31,5 +32,6 @@ pub fn create_provider(kind: &EndpointKind) -> Box<dyn GeyserProvider> {
         EndpointKind::Thor => Box::new(thor::ThorProvider),
         EndpointKind::Shreder => Box::new(shreder::ShrederProvider),
         EndpointKind::Jetstream => Box::new(jetstream::JetstreamProvider),
+        EndpointKind::Jitostream => Box::new(jitoshreder::JitoshrederProvider),
     }
 }
