@@ -5,7 +5,7 @@ use tokio::{ sync::broadcast, task };
 use tokio_stream::Stream;
 
 use crate::{
-    config::{ Config, Endpoint }, providers::jitoshreder::shredstream::SubscribeEntriesRequest, utils::{ get_current_timestamp, open_log_file, write_log_entry, Comparator, TransactionData }
+    config::{ Config, Endpoint }, providers::jitoshreder::shredstream::{shredstream_proxy_client::ShredstreamProxyClient, SubscribeEntriesRequest}, utils::{ get_current_timestamp, open_log_file, write_log_entry, Comparator, TransactionData }
 };
 
 use super::GeyserProvider;
@@ -18,12 +18,6 @@ pub mod shredstream {
 
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("proto_descriptors");
 }
-
-use shredstream::{
-    shreder_service_client::ShrederServiceClient,
-    SubscribeTransactionsRequest as ShrederSubscribeTransactionsRequest,
-    SubscribeTransactionsResponse as ShrederSubscribeTransactionsResponse,
-};
 
 pub struct JitoshrederProvider;
 
@@ -64,7 +58,7 @@ async fn process_shredstream_endpoint(
 
     log::info!("[{}] Connecting to endpoint: {}", endpoint.name, endpoint.url);
 
-    let mut client = ShrederServiceClient::connect(endpoint.url).await?;
+    let mut client = ShredstreamProxyClient::connect(endpoint.url).await?;
     log::info!("[{}] Connected successfully", endpoint.name);
 
     let mut stream = client

@@ -20,12 +20,6 @@ pub mod shredstream {
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("proto_descriptors");
 }
 
-use shredstream::{
-    shreder_service_client::ShrederServiceClient,
-    SubscribeTransactionsRequest as ShrederSubscribeTransactionsRequest,
-    SubscribeTransactionsResponse as ShrederSubscribeTransactionsResponse,
-};
-
 pub struct ShrederProvider;
 
 impl GeyserProvider for ShrederProvider {

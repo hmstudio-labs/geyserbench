@@ -1,16 +1,10 @@
 [config]
 transactions = 100
-account = "pubkey"
+account = "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
 commitment = "processed"
 
 [[endpoint]]
-name = "grpc"
-url = "http://0.0.0.0:10101"
+name = "jitostream"
+url = "http://0.0.0.0:9999"
 x_token = ""
-kind = "yellowstone"
-
-[[endpoint]]
-name = "arpc"
-url = "http://0.0.0.0:20202"
-x_token = ""
-kind = "arpc"
+kind = "jitostream"
