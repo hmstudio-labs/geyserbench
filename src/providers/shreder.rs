@@ -5,8 +5,7 @@ use tokio::{ sync::broadcast, task };
 use tokio_stream::Stream;
 
 use crate::{
-    config::{ Config, Endpoint },
-    utils::{ Comparator, TransactionData, get_current_timestamp, open_log_file, write_log_entry },
+    config::{ Config, Endpoint }, providers::shreder::shredstream::shreder_service_client::ShrederServiceClient, utils::{ get_current_timestamp, open_log_file, write_log_entry, Comparator, TransactionData }
 };
 
 use super::GeyserProvider;

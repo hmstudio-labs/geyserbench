@@ -24,6 +24,7 @@ fn main() -> anyhow::Result<()> {
         mpath("proto/publisher.proto"),
         mpath("proto/shredstream.proto"),
         mpath("proto/jetstream.proto"),
+        mpath("proto/jitoshredstream.proto"),
     ];
 
     // Compile all proto files
@@ -116,6 +117,25 @@ fn main() -> anyhow::Result<()> {
                         .server_streaming()
                         .input_type("crate::shredstream::SubscribeTransactionsRequest")
                         .output_type("crate::shredstream::SubscribeTransactionsResponse")
+                        .codec_path("tonic::codec::ProstCodec")
+                        .build()
+                )
+                .build(),
+        ]
+    );
+    Builder::new().compile(
+        &[
+            Service::builder()
+                .name("ShredstreamProxy")
+                .package("shredstream")
+                .method(
+                    Method::builder()
+                        .name("subscribe_entries")
+                        .route_name("SubscribeEntries")
+                        .client_streaming()
+                        .server_streaming()
+                        .input_type("crate::shredstream::SubscribeEntriesRequest")
+                        .output_type("crate::shredstream::Entry")
                         .codec_path("tonic::codec::ProstCodec")
                         .build()
                 )

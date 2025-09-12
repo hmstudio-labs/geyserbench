@@ -9,7 +9,7 @@ use crate::{
 pub mod arpc;
 pub mod yellowstone;
 pub mod thor;
-// pub mod shreder;
+pub mod shreder;
 pub mod jetstream;
 pub mod jitoshreder;
 

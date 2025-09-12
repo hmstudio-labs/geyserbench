@@ -4,7 +4,14 @@ account = "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
 commitment = "processed"
 
 [[endpoint]]
+name = "yellowstone"
+url = "https://solana-yellowstone-grpc.publicnode.com:443"
+x_token = ""
+kind = "yellowstone"
+
+[[endpoint]]
 name = "jitostream"
 url = "http://0.0.0.0:9999"
 x_token = ""
 kind = "jitostream"
+

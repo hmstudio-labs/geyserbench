@@ -5,12 +5,12 @@ use tokio::{ sync::broadcast, task };
 use tokio_stream::Stream;
 
 use crate::{
-    config::{ Config, Endpoint }, providers::jitoshreder::shredstream::{shredstream_proxy_client::ShredstreamProxyClient, SubscribeEntriesRequest}, utils::{ get_current_timestamp, open_log_file, write_log_entry, Comparator, TransactionData }
+    config::{ Config, Endpoint }, providers::shreder::shredstream::{shredstream_proxy_client::ShredstreamProxyClient, SubscribeEntriesRequest}, utils::{ get_current_timestamp, open_log_file, write_log_entry, Comparator, TransactionData }
 };
 
 use super::GeyserProvider;
 
-pub mod shredstream {
+pub mod jitoshredstream {
     #![allow(clippy::clone_on_ref_ptr)]
     #![allow(clippy::missing_const_for_fn)]
 
