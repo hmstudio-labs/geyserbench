@@ -25,6 +25,7 @@ fn main() -> anyhow::Result<()> {
         mpath("proto/shredstream.proto"),
         mpath("proto/jetstream.proto"),
         mpath("proto/jitoshredstream.proto"),
+        mpath("proto/nextstream.proto"),
     ];
 
     // Compile all proto files
@@ -142,6 +143,7 @@ fn main() -> anyhow::Result<()> {
                 .build(),
         ]
     );
+
     Builder::new().compile(
         &[
             Service::builder()
@@ -184,6 +186,27 @@ fn main() -> anyhow::Result<()> {
                         .route_name("GetVersion")
                         .input_type("crate::jetstream::GetVersionRequest")
                         .output_type("crate::jetstream::GetVersionResponse")
+                        .codec_path("tonic::codec::ProstCodec")
+                        .build()
+                )
+                .build(),
+        ]
+    );
+
+    // NextStream
+    Builder::new().compile(
+        &[
+            Service::builder()
+                .name("NextStreamService")
+                .package("stream")
+                .method(
+                    Method::builder()
+                        .name("subscribe_next_stream")
+                        .route_name("SubscribeNextStream")
+                        .client_streaming()
+                        .server_streaming()
+                        .input_type("crate::stream::NextStreamSubscription")
+                        .output_type("crate::stream::NextStreamNotification")
                         .codec_path("tonic::codec::ProstCodec")
                         .build()
                 )

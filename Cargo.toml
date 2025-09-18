@@ -26,6 +26,8 @@ bs58 = "0.5.1"
 bytes = "1.10.0"
 bincode = "1.3.3"
 solana-entry = "=2.1.1"
+solana-sdk = "2.1.1"
+rand = "0.9.1"
 
 lazy_static = "1.5.0"
 

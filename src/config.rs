@@ -35,6 +35,7 @@ pub enum EndpointKind {
     Shreder,
     Jetstream,
     Jitostream,
+    Nextstream,
 }
 
 #[derive(Debug, Clone, Copy, Default, Deserialize, Serialize)]

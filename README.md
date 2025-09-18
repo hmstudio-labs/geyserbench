@@ -20,7 +20,11 @@ GeyserBench is a performance testing tool that connects to multiple Solana gRPC 
 
 ### Download Binary
 
-Download the latest release from the [releases page](https://github.com/solstackapp/geyserbench/releases).
+Download the latest release from the [releases page](https://github.com/hmstudio-labs/geyserbench/releases).
+```
+wget https://github.com/hmstudio-labs/geyserbench/releases/download/v1.0.0/geyserbench
+
+```
 
 ## Configuration
 
@@ -61,6 +65,12 @@ name = "jitoshredstream"
 url = "http://127.0.0.1:9999"
 x_token = "YOUR_TOKEN_HERE"
 kind = "jitostream"
+
+[[endpoint]]
+name = "Nextstream"
+url = "http://fra.stream.nextblock.io:22221"
+x_token = "YOUR_PRIVATE_KEY_b58"
+kind = "nextstream"
 ```
 
 ### Configuration Options

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package stream;
+
+message NextPacket {
+    bytes transaction = 1;                  // raw transaction bytes
+    uint64 slot = 2;
+}
+
+message NextStreamSubscription {
+    string authentication_publickey = 1;    // the publickey you used to send 5 SOL to nextstream.sol
+    string authentication_message = 2;      // the finished authentication_message:
+    string authentication_signature = 3;    // base58 signature, signed_message signed by authenticated_publieky
+
+    repeated string accounts = 4;           // base58 accounts to subscribe to
+}
+
+message NextStreamNotification {
+    NextPacket packet = 1;
+}
+
+service NextStreamService {
+    rpc SubscribeNextStream (NextStreamSubscription) returns (stream NextStreamNotification) {}
+}
