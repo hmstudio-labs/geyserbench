@@ -70,16 +70,13 @@ async fn process_shredstream_endpoint(
     let authentication_signature =
         authentication_keypair.sign_message(authentication_message.as_bytes());
 
+    
     let mut stream = client
         .subscribe_next_stream(NextStreamSubscription {
             authentication_publickey: authentication_pubkey.to_string(),
             authentication_message: authentication_message,
             authentication_signature: authentication_signature.to_string(),
-            accounts: vec![
-                Pubkey::from_str("675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8")
-                    .unwrap()
-                    .to_string(),
-            ],
+            accounts: vec![config.account.clone()],
         })
         .await
         .unwrap()
