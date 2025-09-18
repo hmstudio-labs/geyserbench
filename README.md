@@ -22,7 +22,7 @@ GeyserBench is a performance testing tool that connects to multiple Solana gRPC 
 
 Download the latest release from the [releases page](https://github.com/hmstudio-labs/geyserbench/releases).
 ```
-wget https://github.com/hmstudio-labs/geyserbench/releases/download/v1.0.0/geyserbench
+wget https://github.com/hmstudio-labs/geyserbench/releases/download/v1.1.0/geyserbench
 
 ```
 
